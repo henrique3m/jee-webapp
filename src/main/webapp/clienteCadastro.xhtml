@@ -1,0 +1,58 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+   xmlns:ui="http://java.sun.com/jsf/facelets"
+   xmlns:f="http://java.sun.com/jsf/core"
+   xmlns:h="http://java.sun.com/jsf/html"
+   xmlns:pt="http://xmlns.jcp.org/jsf/passthrough"
+   template="/WEB-INF/templates/default.xhtml">
+   <ui:define name="content">
+      <h:form id="formCliente">
+      	<h:messages id="messages" infoStyle="color: blue" errorStyle="color:red" style="width: 100%" />
+         <h2>CLIENTE</h2>
+         <table>
+            <tr>
+               <th style="text-align: right;">
+                  <h:outputLabel for="nome" value="Nome do Cliente:"/>
+               </th>
+               <td>
+                  <h:inputText id="nome" value="#{clienteBean.clienteResource.nome}"/>
+                  <h:message for="nome" errorClass="invalid"/>
+               </td>
+            </tr>
+            <tr>
+               <th style="text-align: right;">
+                  <h:outputLabel for="cpf" value="CPF do Cliente:"/>
+               </th>
+               <td>
+                  <h:inputText id="cpf" value="#{clienteBean.clienteResource.cpf}"/>
+                  <h:message for="cpf" errorClass="invalid"/>
+               </td>
+            </tr>
+            <tr>
+               <th style="text-align: right;">
+                  <h:outputLabel for="email" value="Email do Cliente:"/>
+               </th>
+               <td>
+                  <h:inputText id="email" value="#{clienteBean.clienteResource.email}"/>
+                  <h:message for="email" errorClass="invalid"/>
+               </td>
+            </tr>
+            <tr>
+               <th style="text-align: right;">
+                  <h:outputLabel for="dataNascimento" value="Nascimento do Cliente:"/>
+               </th>
+               <td>
+                  <h:inputText id="dataNascimento" value="#{clienteBean.clienteResource.dataNascimento}" pt:placeholder="dd/MM/yyyy">
+                  	<f:convertDateTime pattern="dd/MM/yyyy"/>
+                  </h:inputText>
+                  <h:message for="dataNascimento" errorClass="invalid"/>
+               </td>
+            </tr>
+         </table>
+         <p>
+            <h:commandButton id="salvar" value="Salvar Cliente" action="#{clienteBean.salvarCliente()}" />
+            <h:commandButton id="redirecionar" value="Mostrar Clientes" action="#{clienteBean.listarClientes()}" />
+         </p>
+      </h:form>
+   </ui:define>
+</ui:composition>

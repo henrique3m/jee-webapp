@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+   xmlns:ui="http://java.sun.com/jsf/facelets"
+   xmlns:f="http://java.sun.com/jsf/core"
+   xmlns:h="http://java.sun.com/jsf/html"
+   xmlns:pt="http://xmlns.jcp.org/jsf/passthrough"
+   template="/WEB-INF/templates/default.xhtml">
+   <ui:define name="content">
+      <h:form id="formCliente">
+         <h2>CLIENTE</h2>
+         <h:dataTable var="cliente" value="#{clienteBean.clientes}" border="1"> -->
+	         <h:column>
+	            <f:facet name="header">Id</f:facet>
+	            #{cliente.id}
+	         </h:column>
+	         <h:column>
+	            <f:facet name="header">Nome do Cliente</f:facet>
+	            #{cliente.nome}
+	         </h:column>
+	         <h:column>
+	            <f:facet name="header">CPF do Cliente</f:facet>
+	            #{cliente.cpf}
+	         </h:column>
+	         <h:column>
+	            <f:facet name="header">Email do Cliente</f:facet>
+	            #{cliente.email}
+	         </h:column>
+	         <h:column>
+	            <f:facet name="header">Nascimento do Cliente</f:facet>
+	            <h:outputText value="#{cliente.dataNascimento}">
+	            	<f:convertDateTime pattern="dd/MM/yyyy"/>
+	            </h:outputText>
+	         </h:column>
+	      </h:dataTable>
+	      <p>
+            <h:commandButton id="voltar" value="voltar" action="clienteCadastro" />
+         </p>
+      </h:form>
+   </ui:define>
+</ui:composition>
